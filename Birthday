@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For You ❤️</title>
+  <style>
+    body {
+      background-color: #fff0f5;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 20px;
+      color: #333;
+      margin: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: #d11a2a;
+      margin-top: 20px;
+    }
+    .music-container {
+      margin: 20px auto;
+      background: white;
+      padding: 10px;
+      display: inline-block;
+      border-radius: 30px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .photo-card {
+      background: white;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    img {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .caption {
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+    /* Game Styles */
+    .game-section {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin-top: 40px;
+      position: relative;
+      min-height: 180px;
+    }
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+    }
+    button {
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.2s;
+    }
+    #yesBtn {
+      background-color: #ff4d6d;
+      color: white;
+    }
+    #noBtn {
+      background-color: #777;
+      color: white;
+      position: relative;
+    }
+    #message {
+      font-size: 1.3rem;
+      color: #d11a2a;
+      font-weight: bold;
+      margin-top: 20px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>To My Favorite Person ❤️</h1>
+    <p>Here are just a few of my favorite memories with you.</p>
+
+    <!-- Music Player -->
+    <div class="music-container">
+      <audio controls loop>
+        <source src="music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <div style="font-size: 0.8rem; color: #777; margin-top: 4px;">Press play for background music 🎵</div>
+    </div>
+
+    <!-- Photo Gallery -->
+    <div class="gallery">
+      <div class="photo-card">
+        <img src="photo1.jpg" alt="Memory 1" />
+        <div class="caption">Our first favorite day</div>
+      </div>
+      <div class="photo-card">
+        <img src="photo2.jpg" alt="Memory 2" />
+        <div class="caption">Always making me smile</div>
+      </div>
+      <div class="photo-card">
+        <img src="photo3.jpg" alt="Memory 3" />
+        <div class="caption">My favorite adventure</div>
+      </div>
+    </div>
+
+    <!-- Interactive Game -->
+    <div class="game-section">
+      <h2 id="questionHeading">Will you be my valentine forever? 🥰</h2>
+      <div class="btn-container" id="actions">
+        <button id="yesBtn" onclick="sayYes()">Yes!</button>
+        <button id="noBtn" onmouseover="moveButton()">No</button>
+      </div>
+      <div id="message">Yay! I knew you'd say yes! I love you! ❤️✨</div>
+    </div>
+  </div>
+
+  <script>
+    // Makes the "No" button run away when hovered over
+    function moveButton() {
+      const noBtn = document.getElementById('noBtn');
+      const gameSection = document.querySelector('.game-section');
+      
+      // Calculate boundaries so it stays inside the white box
+      const maxX = gameSection.clientWidth - noBtn.clientWidth - 40;
+      const maxY = gameSection.clientHeight - noBtn.clientHeight - 40;
+      
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+      
+      noBtn.style.position = 'absolute';
+      noBtn.style.left = randomX + 'px';
+      noBtn.style.top = randomY + 'px';
+    }
+
+    // Handles the "Yes" action
+    function sayYes() {
+      document.getElementById('actions').style.display = 'none';
+      document.getElementById('questionHeading').style.display = 'none';
+      document.getElementById('message').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
